@@ -16,6 +16,6 @@ public class Coordinador : Persona
     public override string MostrarInformacion()
     {
         string areas = string.Join(", ", AreasAsignadas);
-        return $"Coordinador | Nombre: {Nombre} | DNI: {Dni} | Áreas asignadas: {areas} | Personas a cargo: {CantidadPersonasACargo}";
+        return $"Coordinador | Nombre: {Nombre} | DNI: {Dni} | Areas asignadas: {areas} | Personas a cargo: {CantidadPersonasACargo}";
     }
 }

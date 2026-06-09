@@ -13,6 +13,9 @@ public class Program
             Console.WriteLine("SISTEMA DE VOLUNTARIADO");
             Console.WriteLine("1. Agregar voluntario");
             Console.WriteLine("2. Agregar coordinador");
+            Console.WriteLine("3. Listar todas las personas");
+            Console.WriteLine("4. Listar voluntarios");
+            Console.WriteLine("5. Listar coordinadores");
             Console.WriteLine("0. Salir");
             Console.Write("Ingrese una opcion: ");
             opcion = int.Parse(Console.ReadLine());
@@ -24,6 +27,15 @@ public class Program
                     break;
                 case 2:
                     AgregarCoordinador();
+                    break;
+                case 3:
+                    ListarTodos();
+                    break;
+                case 4:
+                    ListarVoluntarios();
+                    break;
+                case 5:
+                    ListarCoordinadores();
                     break;
                 case 0:
                     Console.WriteLine("Saliendo del sistema...");
@@ -73,5 +85,43 @@ public class Program
         Coordinador coordinador = new Coordinador(nombre, dni, areas, personasACargo);
         listaPersonas.Add(coordinador);
         Console.WriteLine("Coordinador agregado correctamente.");
+    }
+
+    static void ListarTodos()
+    {
+        Console.WriteLine("LISTADO DE TODAS LAS PERSONAS");
+        if (listaPersonas.Count == 0)
+        {
+            Console.WriteLine("No hay personas cargadas.");
+            return;
+        }
+        foreach (Persona persona in listaPersonas)
+        {
+            Console.WriteLine(persona.MostrarInformacion());
+        }
+    }
+
+    static void ListarVoluntarios()
+    {
+        Console.WriteLine("LISTADO DE VOLUNTARIOS");
+        foreach (Persona persona in listaPersonas)
+        {
+            if (persona is Voluntario)
+            {
+                Console.WriteLine(persona.MostrarInformacion());
+            }
+        }
+    }
+
+    static void ListarCoordinadores()
+    {
+        Console.WriteLine("LISTADO DE COORDINADORES");
+        foreach (Persona persona in listaPersonas)
+        {
+            if (persona is Coordinador)
+            {
+                Console.WriteLine(persona.MostrarInformacion());
+            }
+        }
     }
 }
